@@ -1,0 +1,785 @@
+/* app.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;  /* Light base color */
+    background-image: url('background.jpg');
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.description, .content {
+    font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: #131212;
+}
+
+.app-logo {
+    width: 200px; /* Smaller button width */
+    height: 200px; /* Smaller button height */
+    border: none;
+    background-image: url('logo.png');
+    background-size: cover; /* Ensure the image covers the button */
+    background-color: #ffffff;
+    position: center;
+    margin: 20px 0;
+}
+
+
+.trash-form {
+    float: right; /* Pushes the trash button to the right */
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.container button img{
+    width: 25px;
+}
+
+.note-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next line */
+    justify-content: center; /* Centers notes horizontally */
+}
+
+.note-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
+    padding: 20px;
+}
+
+.note-card {
+    background-color: #cad2c5;
+    border: 1px solid #5e5757;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.note-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slightly bigger shadow on hover */
+    transform: translateY(-3px);
+}
+
+.note-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.note-card i {
+    font-size: 0.95rem;
+    color: #0b0b0b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 3; /* Limits the preview to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    background-color: #c5d8c9;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    gap: 10px; 
+}
+
+button:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.add-btn {
+    width: 50px; /* Smaller button width */
+    height: 50px; /* Smaller button height */
+    border: none;
+    background-image: url('add-note.png');
+    background-size: cover; /* Ensure the image covers the button */
+    background-position: center;
+    cursor: pointer;
+     /* Optional: keeps rounded corners */
+}
+
+.search-btn {
+    width: 40px; /* Smaller button width */
+    height: 40px; /* Smaller button height */
+    border: none;
+    background-image: url('search.png');
+    background-size: cover; /* Ensure the image covers the button */
+    background-position: center;
+    cursor: pointer; /* Optional: keeps rounded corners */
+}
+
+.btn-view {
+    width: 43px; /* Smaller button width */
+    height: 43px;
+    background-image: url('view.png');
+    background-size: cover;
+    color: #333;
+    border: 1px solid #ccc;
+    background-color: #fbfafa;
+}
+
+.btn-view:hover {
+    background-color: #cad2c5;
+    transform: translateY(-2px);
+}
+
+/* Button for edit and update (blue background, white text) */
+.btn-edit{
+    width: 43px; /* Smaller button width */
+    height: 43px;
+    background-image: url('edit.png');
+    background-size: cover;
+    color: white;
+    padding: none;
+    background-color: #fbfafa;
+}
+
+.btn-edit:hover{
+    background-color: #cad2c5; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+/* Button for delete (red background, white text) */
+.btn-delete {
+    width: 43px; /* Smaller button width */
+    height: 43px;
+    background-image: url('delete.png');
+    background-size: cover;
+    color: white;
+    background-color: #fbfafa;
+}
+
+.btn-delete:hover {
+    background-color: #cad2c5; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+
+button:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#container {
+    max-width: 400px;
+    width: 40%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+#container img{
+    max-width: 400px;
+    width: 90%;
+    padding: 20px;
+    border-radius: 15px;;
+    justify-content: center; /* Horizontally centers the image */
+    align-items: center;
+}
+
+
+.note-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-container img{
+    width: 60px;
+}
+
+.search-box {
+    width: 50%; /* Use a percentage for responsive width */
+    max-width: 300px; /* Maximum width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.box {
+    width: 50%; /* Use a percentage for responsive width */
+    max-width: 600px; /* Maximum width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3498db; /* Blue focus border */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2); /* Soft blue shadow */
+    outline: none;
+}
+
+/* Textarea styling */
+.form-control textarea {
+    resize: vertical;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .note-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .note-container {
+        padding: 15px;
+    }
+
+    .form-control {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* From Uiverse.io by andrew-demchenk0 */ 
+.button-trash {
+    --main-focus: #2d8cf0;
+    --font-color: #323232;
+    --bg-color-sub: #d0d7cf;
+    --bg-color: #e6e6e6;
+    --main-color: #abb9a9;
+    position: relative;
+    width: 170px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.button-trash, .button__icon, .button__text {
+    transition: all 0.3s;
+}
+  
+.button-trash .button__text {
+    transform: translateX(33px);
+    color: var(--font-color);
+    font-weight: 600;
+}
+  
+.button-trash .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.button-trash .svg {
+    width: 20px;
+    fill: var(--main-color);
+}
+  
+.button-trash:hover {
+    background: var(--bg-color);
+}
+  
+.button-trash:hover .button__text {
+    color: transparent;
+}
+  
+.button-trash:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+}
+  
+.button-trash:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+}
+
+
+  /* From Uiverse.io by alexruix */ 
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 290px;
+}
+  
+.input {
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    width: 100%;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #D9E8D8;
+    color: #0d0c22;
+    box-shadow: 0 0 5px #C1D9BF, 0 0 0 10px #f5f5f5eb;
+    transition: .3s ease;
+}
+  
+.input::placeholder {
+    color: #777;
+}
+  
+.icon {
+    position: absolute;
+    left: 1rem;
+    fill: #777;
+    width: 1rem;
+    height: 1rem;
+}
+
+
+
+/* From Uiverse.io by zjssun */ 
+.button-logo {
+    position: relative;
+    border: none;
+    background: transparent;
+    --stroke-color: #ccc;
+    --ani-color: rgba(95, 3, 244, 0);
+    --color-gar: linear-gradient(90deg,#cad2c5,#84a98c,#52796f,#2f3e46);
+    letter-spacing: 3px;
+    font-size: 3em;
+    font-family: "Lemon Tuesday", sans-serif;
+    text-transform: capitalize;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--stroke-color);
+    cursor: pointer;
+}
+  
+.button-logo:hover{
+    background-color: #dee1dc;
+    transform: translateY(-2px);
+}
+
+.logo-container {
+    text-align: center;
+    max-width: 200px;
+    margin: 0 auto;
+    background-color: #dfeae2;
+    border-radius: 45px;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.front-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    background: var(--color-gar);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200%;
+    overflow: hidden;
+    transition: all 1s;
+    animation: 8s ani infinite;
+    border-bottom: 2px solid transparent;
+}
+  
+.button-logo:hover .front-text {
+    width: 100%;
+    border-bottom: 2px solid #2f3e46;
+    -webkit-text-stroke: 1px var(--ani-color);
+}
+  
+@keyframes ani {
+    0% {
+      background-position: 0%;
+    }
+  
+    50% {
+      background-position: 400%;
+    }
+  
+    100% {
+      background-position: 0%;
+    }
+}
+
+
+/* From Uiverse.io by vinodjangid07 */ 
+.button-back {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #375255;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 4px rgba(110, 108, 120, 0.253);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.button-back:hover {
+    width: 150px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    background-color: #84a98c;
+    align-items: center;
+}
+
+.button-back:hover .svgIcon {
+    /* width: 20px; */
+    transition-duration: 0.3s;
+    transform: translateY(-200%);
+}
+
+.button-back::before {
+    position: absolute;
+    bottom: -20px;
+    content: "back to notes";
+    color: white;
+    /* transition-duration: .3s; */
+    font-size: 0px;
+}
+
+.button-back:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    /* transform: translateY(-30px); */
+    transition-duration: 0.3s;
+}
+
+
+/* From Uiverse.io by anniekoop */ 
+.input-t {
+    font-family: "Poppins", sans-serif;
+    max-width: 40%;
+    padding: 0.875rem;
+    font-size: 1rem;
+    border: 1.5px solid #000;
+    border-radius: 0.5rem;
+    box-shadow: 2.5px 3px 0 #000;
+    outline: none;
+    transition: ease 0.25s;
+}
+  
+.input-t:focus {
+    box-shadow: 5.5px 7px 0 black;
+}
+
+
+.input-dc{
+    font-family: "Poppins", sans-serif;
+    max-width: 55%;
+    padding: 0.875rem;
+    font-size: 1.2rem;
+    border: 1.5px solid #000;
+    border-radius: 0.5rem;
+    box-shadow: 2.5px 3px 0 #000;
+    outline: none;
+    transition: ease 0.25s;
+}
+  
+.input-dc:focus {
+    box-shadow: 5.5px 7px 0 black;
+}
+
+
+/* From Uiverse.io by zymantas-katinas */ 
+.button-save {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+  
+  /* Shadow layer */
+.button-save .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+  
+  /* Edge layer */
+.button-save .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    background: #b8b6b6;
+}
+  
+  /* Front layer */
+.button-save .front {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-size: 0.98rem;
+    color: white;
+    background: hsl(152, 15%, 41%);
+    border-radius: 40px;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+  
+  /* Hover and active states */
+.button-save:hover .shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+  
+.button-save:hover .front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+  
+.button-save:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+  
+.button-save:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+  
+  /* Disable text selection */
+.button-save .front span {
+    user-select: none;
+}
+  
+
+
+/* button-update */ 
+.button-update {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+  
+  /* Shadow layer */
+.button-update .shadow-update {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+  
+  /* Edge layer */
+.button-update .edge-update {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    background: #b8b6b6;
+}
+  
+  /* Front layer */
+.button-update .front-update {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-size: 0.98rem;
+    color: white;
+    background: hsl(152, 15%, 41%);
+    border-radius: 40px;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+  
+  /* Hover and active states */
+.button-update:hover .shadow-update {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+  
+.button-update:hover .front-update {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+  
+.button-update:active .shadow-update {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+  
+.button-update:active .front-update {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+  
+  /* Disable text selection */
+.button-update .front-update span {
+    user-select: none;
+}
+
+
+/* button-restore */ 
+.button-restore {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+  
+  /* Shadow layer */
+.button-restore .shadow-restore {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+  
+  /* Edge layer */
+.button-restore .edge-restore {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 35px;
+    background: #b8b6b6;
+}
+  
+  /* Front layer */
+.button-restore .front-restore {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 0.90rem;
+    color: white;
+    background: #3a4d57;
+    border-radius: 35px;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+  
+  /* Hover and active states */
+.button-restore:hover .shadow-restore {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+  
+.button-restore:hover .front-restore {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+  
+.button-restore:active .shadow-restore {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+  
+.button-restore:active .front-restore {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+  
+  /* Disable text selection */
+.button-restore .front-restore span {
+    user-select: none;
+}
+  

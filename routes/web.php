@@ -20,6 +20,6 @@ Route::get('/notes/{id}', [NoteController::class, 'showNote'])->name('showNote')
 Route::get('/notes/{id}/edit', [NoteController::class, 'editNote'])->name('editNote');
 Route::put('/notes/{id}/update', [NoteController::class, 'updateNote'])->name('updateNote');
 
-Route::delete('/notes/{id}/trash', [NoteController::class, 'deleteNote'])->name('deleteNote');
+Route::post('/notes/{id}/trash', [NoteController::class, 'deleteNote'])->name('deleteNote');
 Route::post('/notes/{id}/restore', [NoteController::class, 'restoreNote'])->name('restoreNote');
 Route::delete('/notes/{id}/delete', [NoteController::class, 'forceDeleteNote'])->name('forceDeleteNote');

@@ -28,7 +28,7 @@ class NoteController extends Controller
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
             'content' => 'nullable|string|max:1000',
-            'pinned' => 'nullable|string|max:5',
+            'pinned' => 'nullable|boolean',
             'favorite' => 'nullable|string|max:10'
         ]);
 
@@ -73,7 +73,7 @@ class NoteController extends Controller
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
             'content' => 'nullable|string|max:1000',
-            'pinned' => 'nullable|string|max:5',
+            'pinned' => 'nullable|boolean',
             'favorite' => 'nullable|string|max:10',
         ]);
 

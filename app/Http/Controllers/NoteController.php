@@ -10,9 +10,8 @@ class NoteController extends Controller
 {
     public function showAllNotes()
     {
-        $notes = Note::where('archived', false)->get();
-        $notes = Note::orderBy('pinned', 'desc')->get();
-        $notes = Note::orderBy('updated_at', 'desc')->get();
+        $notes = Note::where('archived', false)->orderBy('pinned', 'desc')->get();
+        $notes = Note::where('archived', false)->orderBy('updated_at', 'desc')->get();
 
         return view('notes', ['notes' => $notes]);
     }
@@ -27,17 +26,13 @@ class NoteController extends Controller
         $validated = $request->validate([
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
-            'content' => 'nullable|string|max:1000',
-            'pinned' => 'nullable|boolean',
-            'favorite' => 'nullable|string|max:10'
+            'content' => 'nullable|string|max:1000',            
         ]);
 
         $note = new Note();
         $note->title = $validated['title'];
         $note->description = $validated['description'];
         $note->content = $validated['content'];
-        $note->pinned = $validated['pinned'];
-        $note->favorite = $validated['favorite'];
         $note->save();
 
         return redirect()->route('showAllNotes')->with('success', 'Note created successfully.');
@@ -73,16 +68,12 @@ class NoteController extends Controller
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
             'content' => 'nullable|string|max:1000',
-            'pinned' => 'nullable|boolean',
-            'favorite' => 'nullable|string|max:10',
         ]);
 
         $note = Note::find($request->id);
         $note->title = $validated['title'];
         $note->description = $validated['description'];
         $note->content = $validated['content'];
-        $note->pinned = $validated['pinned'];
-        $note->favorite = $validated['favorite'];
         $note->save();
 
         return redirect()->route('showNote', ['id' => $note->id])->with('success', 'Note updated successfully.');
@@ -156,8 +147,9 @@ class NoteController extends Controller
         return view('favorite-notes', ['favoriteNotes' => $favoriteNotes]);
     }
 
-    public function archiveNote(Note $note)
+    public function archiveNote(Request $request)
     {
+        $note = Note::find($request->id);
         $note->archived = !$note->archived;
         $note->save();
 
@@ -166,7 +158,7 @@ class NoteController extends Controller
 
     public function showArchive()
     {
-        $archivedNotes = Note::orderBy('archive', 'desc')->get();
+        $archivedNotes = Note::orderBy('archived', 'desc')->get();
         return view('archived-notes', ['archivedNotes' => $archivedNotes]);
     }
 }

@@ -40,18 +40,18 @@
                 {{ $note->pinned ? 'Unpin' : 'Pin' }}
             </button>
         </form>
-        <form action="{{ route('favoriteNote', $note->id) }}" method="POST">
+        <form action="{{ route('favoriteNote', ['id' => $note->id]) }}" method="POST">
             @method('PATCH')
             @csrf
             <button type="submit">
                 {{ $note->favorite ? 'Unfavorite' : 'Favorite' }}
             </button>
         </form>
-        <form action="{{ route('notes.toggleArchive', $note->id) }}" method="POST">
-            @csrf
+        <form action="{{ route('archiveNote', ['id' => $note->id]) }}" method="POST">
             @method('PATCH')
+            @csrf
             <button type="submit">
-                {{ $note->archived ? 'Unarchive' : 'Archive' }}
+                {{ $note->archive ? 'Unarchive' : 'Archive' }}
             </button>
         </form>
         <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline">

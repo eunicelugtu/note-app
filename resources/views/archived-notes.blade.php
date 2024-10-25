@@ -12,7 +12,7 @@
         <button type="submit">Back to Notes</button>
     </form>
 
-    @foreach ($archivedNotes->where('archive', true) as $note)
+    @foreach ($archivedNotes->where('archived', true) as $note)
     <div><b>{{$note->title ?? 'Untitled'}}</b></div>
     <div><i>{{$note->description}}</i></div>
 

@@ -23,7 +23,7 @@
 
     <h1><b>Create Note</b></h1>
 
-    <form action="{{route('saveNote')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('saveNote')}}" method="POST">
         @method('POST')
         @csrf
         <div>
@@ -37,10 +37,6 @@
         <div class="form-group">
             <label for="content"></label>
             <input placeholder="Content" class="input-dc" id="content" name="content" type="text"><br>
-        </div>
-        <div id="container">
-            <label for="image">Upload Image</label>
-            <input type="file" name="image" accept="image/*" class="form-control" class="box">
         </div>
 
         <br>

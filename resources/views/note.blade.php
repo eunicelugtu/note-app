@@ -25,15 +25,35 @@
 
         <div><h2><b>{{ $note->title ?? 'Untitled' }}</b></h2></div>
         <div class="description">{{ $note->description ?? 'no description' }}</div><br>
-        <div class="content">{{$note->content ?? ''}}</div>
-        <div id="container">
-            @if($note->image)
-                    <img src="{{ asset('storage/' . $note->image) }}" alt="Note Image" style="max-width: 300px;">
-            @endif
-        </div>
+        <div class="content">{{$note->content ?? ' '}}</div>
         <div><p><strong>Last Updated:</strong> {{ $note->updated_at->diffForHumans() }}</p></div>
 
+        @if ($note->favorite)
+            <div>Favorite</div>
+        @endif
+
         <br>
+        <form action="{{ route('pinnedNote', ['id' => $note->id]) }}" method="POST">
+            @method('PATCH')
+            @csrf
+            <button type="submit">
+                {{ $note->pinned ? 'Unpin' : 'Pin' }}
+            </button>
+        </form>
+        <form action="{{ route('favoriteNote', $note->id) }}" method="POST">
+            @method('PATCH')
+            @csrf
+            <button type="submit">
+                {{ $note->favorite ? 'Unfavorite' : 'Favorite' }}
+            </button>
+        </form>
+        <form action="{{ route('notes.toggleArchive', $note->id) }}" method="POST">
+            @csrf
+            @method('PATCH')
+            <button type="submit">
+                {{ $note->archived ? 'Unarchive' : 'Archive' }}
+            </button>
+        </form>
         <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline">
             <button type="submit" class="btn-edit"></button>
         </form>

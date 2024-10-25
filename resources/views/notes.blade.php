@@ -38,6 +38,9 @@
                 </svg>
                 <input placeholder="search" type="search" class="input">
             </div>
+        </form>
+        <form action="{{route('showAllFavorites')}}" method="GET">
+            <button type="submit">Favorite</button>
         </form><br>
         <br>
 
@@ -49,14 +52,24 @@
         </form>
 
         <ul class="note-list">
-            @foreach ($notes as $note)
                 <li>
                     <div class="note-grid">
                     <div class="note-card">
+
+                    @foreach ($notes->where('pinned', true) as $note)
+                        <div class="note pinned">
                         <div><b>{{ $note->title ?? 'Untitled' }}</b></div>
                         <div class="description">{{ $note->description ?? 'no description' }}</div>
 
-                        <br>
+                        <div>Pinned</div>
+
+                        <form action="{{ route('pinnedNote', ['id' => $note->id]) }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <button type="submit">
+                                {{ $note->pinned ? 'Unpin' : 'Pin' }}
+                            </button>
+                        </form>
                         <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
                             <button type="submit" class="btn-view"></button>
                         </form>
@@ -69,9 +82,38 @@
                             @csrf
                             <button type="submit" class="btn-delete"></button>
                         </form>
+                        <hr>
+                    @endforeach
+
+                    @foreach ($notes->where('pinned', false) as $note)
+                        <div class="note pinned">
+                        <div><b>{{ $note->title ?? 'Untitled' }}</b></div>
+                        <div class="description">{{ $note->description ?? 'no description' }}</div>
+
+                        <form action="{{ route('pinnedNote', ['id' => $note->id]) }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <button type="submit">
+                                {{ $note->pinned ? 'Unpin' : 'Pin' }}
+                            </button>
+                        </form>
+                        <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
+                            <button type="submit" class="btn-view"></button>
+                        </form>
+                        <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
+                            <button type="submit" class="btn-edit"></button>
+                        </form>
+                        <form action="{{route('deleteNote', ['id' => $note->id])}}" method="POST" style="display:inline"
+                        onsubmit="return confirm('Move to trash?')">
+                            @method('POST')
+                            @csrf
+                            <button type="submit" class="btn-delete"></button>
+                        </form>
+                        
+                    @endforeach
+
                 </li>
                 <hr>
-            @endforeach
         </ul>
     </div>
 </body>

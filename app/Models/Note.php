@@ -13,6 +13,8 @@ class Note extends Model
         'title',
         'description',
         'content',
-        'image',
+        'pinned',
+        'favorite',
+        'archive'
     ];
 }

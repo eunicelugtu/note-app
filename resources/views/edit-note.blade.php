@@ -22,7 +22,7 @@
         </form>
 
         <h1><b>Edit Note</b></h1>
-        <form action="{{route('updateNote', ['id' => $note->id])}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('updateNote', ['id' => $note->id])}}" method="POST">
             @method('PUT')
             @csrf
             <div>
@@ -37,19 +37,7 @@
                 <label for="content"></label>
                 <input value="{{$note->content}}" placeholder="Content" class="input-dc" id="content" name="content" type="text"><br>
             </div>
-            <div class="note-container">
-                <label for="image">Upload Image</label>
-                <input type="file" name="image" accept="image/*" class="box">
-            </div>
             <br>
-            <div id="container">
-                @if($note->image)
-                    <div>
-                        <p>Current Image:</p>
-                        <img src="{{ asset('storage/' . $note->image) }}" alt="Current Image" style="max-width: 100px;">
-                    </div>
-                @endif
-            </div>
 
             <br>
             <button type="submit" class="button-update"><span class="shadow-update"></span><span class="edge-update"></span><div class="front-update"><span>update</span></div></button>

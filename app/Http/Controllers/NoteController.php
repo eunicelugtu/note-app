@@ -10,6 +10,8 @@ class NoteController extends Controller
 {
     public function showAllNotes()
     {
+        $notes = Note::where('archived', false)->get();
+        $notes = Note::orderBy('pinned', 'desc')->get();
         $notes = Note::orderBy('updated_at', 'desc')->get();
 
         return view('notes', ['notes' => $notes]);
@@ -26,19 +28,16 @@ class NoteController extends Controller
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
             'content' => 'nullable|string|max:1000',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'pinned' => 'nullable|string|max:5',
+            'favorite' => 'nullable|string|max:10'
         ]);
-
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
-        }
 
         $note = new Note();
         $note->title = $validated['title'];
         $note->description = $validated['description'];
         $note->content = $validated['content'];
-        $note->image = $imagePath;
+        $note->pinned = $validated['pinned'];
+        $note->favorite = $validated['favorite'];
         $note->save();
 
         return redirect()->route('showAllNotes')->with('success', 'Note created successfully.');
@@ -73,27 +72,17 @@ class NoteController extends Controller
         $validated = $request->validate([
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
-            'content' => 'required|string|max:1000',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'content' => 'nullable|string|max:1000',
+            'pinned' => 'nullable|string|max:5',
+            'favorite' => 'nullable|string|max:10',
         ]);
-
-        if ($request->hasFile('image')) {
-            if ($note->image) {
-                Storage::disk('public')->delete($note->image);
-            }
-    
-            $imagePath = $request->file('image')->store('images', 'public');
-            $note->image = $imagePath;
-        }
-        else
-        {
-            $imagePath = $note->image;
-        }
 
         $note = Note::find($request->id);
         $note->title = $validated['title'];
         $note->description = $validated['description'];
         $note->content = $validated['content'];
+        $note->pinned = $validated['pinned'];
+        $note->favorite = $validated['favorite'];
         $note->save();
 
         return redirect()->route('showNote', ['id' => $note->id])->with('success', 'Note updated successfully.');
@@ -141,5 +130,43 @@ class NoteController extends Controller
                         ->get();
 
         return view('search-results', ['results' => $results]);
+    }
+
+    public function pinnedNote(Request $request)
+    {
+        $note = Note::find($request->id);
+        $note->pinned = !$note->pinned;
+        $note->save();
+
+        return redirect()->route('showAllNotes')->with('status', 'Note is pinned.');
+    }
+
+    public function favoriteNote(Request $request)
+    {
+        $note = Note::find($request->id);
+        $note->favorite = !$note->favorite;
+        $note->save();
+
+        return redirect()->route('showNote', ['id' => $note->id])->with('status', 'Note is added to favorites.');
+    }
+
+    public function showAllFavorites()
+    {
+        $favoriteNotes = Note::orderBy('favorite', 'desc')->get();
+        return view('favorite-notes', ['favoriteNotes' => $favoriteNotes]);
+    }
+
+    public function archiveNote(Note $note)
+    {
+        $note->archived = !$note->archived;
+        $note->save();
+
+        return redirect()->route('showAllNotes')->with('status', 'Note is archived.');
+    }
+
+    public function showArchive()
+    {
+        $archivedNotes = Note::orderBy('archive', 'desc')->get();
+        return view('archived-notes', ['archivedNotes' => $archivedNotes]);
     }
 }

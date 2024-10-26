@@ -286,6 +286,28 @@ input[type="text"] {
     }
 }
 
+footer {
+    background-color: none;
+    color: #6c757d;
+    font-size: 0.90em;
+    padding: 0.90em;
+    text-align: center;
+    border-radius: 10px;
+    border-top: 1px solid #ddd;
+    position: relative;
+    display: inline;
+    bottom: 0;
+    max-height: 100px;
+    height: 10%;
+    max-width: 300px;
+    width: 30%;
+}
+
+footer p {
+    margin: 0 auto;
+}
+
+
 
 /* From Uiverse.io by andrew-demchenk0 */ 
 .button-trash {
@@ -352,6 +374,70 @@ input[type="text"] {
 }
 
 
+/* From Uiverse.io by andrew-demchenk0 */ 
+.button-add {
+    --main-focus: #2d8cf0;
+    --font-color: #323232;
+    --bg-color-sub: #d0d7cf;
+    --bg-color: #e6e6e6;
+    --main-color: #abb9a9;
+    position: relative;
+    width: 170px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.button-add, .button-add__icon, .button-add__text {
+    transition: all 0.3s;
+}
+  
+.button-add .button-add__text {
+    transform: translateX(33px);
+    color: var(--font-color);
+    font-weight: 600;
+}
+  
+.button-add .button-add__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.button-add .svg {
+    width: 20px;
+    fill: var(--main-color);
+}
+  
+.button-add:hover {
+    background: var(--bg-color);
+}
+  
+.button-add:hover .button-add__text {
+    color: transparent;
+}
+  
+.button-add:hover .button-add__icon {
+    width: 148px;
+    transform: translateX(0);
+}
+  
+.button-add:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+}
+
   /* From Uiverse.io by alexruix */ 
 .group {
     display: flex;
@@ -362,9 +448,9 @@ input[type="text"] {
 }
   
 .input {
-    height: 40px;
+    height: 25px;
     line-height: 28px;
-    padding: 0 1rem;
+    padding: 0;
     width: 100%;
     padding-left: 2.5rem;
     border: 2px solid transparent;
@@ -782,4 +868,107 @@ input[type="text"] {
 .button-restore .front-restore span {
     user-select: none;
 }
+
+
+/* From Uiverse.io by akshat-patel28 */ 
+.button-container {
+    display: flex;
+    background-color: rgb(184, 196, 187);
+    width: 98%;
+    height: 50px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    box-shadow: rgba(128, 123, 123, 0.35) 0px 5px 15px,
+          rgba(70, 66, 68, 0.5) 5px 10px 15px;
+}
+  
+.button-menu {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d0d7cf;
+    color: #010101;
+    cursor: pointer;
+}
+
+.button-menu:hover {
+    background-color: #e6e6e6
+}
+  
+  .icon {
+    font-size: 20px;
+    color: #bda6a6;
+  }
+
+
+/* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 60px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: #d0d7cf;
+  }
+  
+  /* plus sign */
+  .svgWrapper {
+    width: 100%;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .svgIcon-a {
+    width: 22px;
+  }
+  
+  /* text */
+  .text {
+    position: absolute;
+    right: 0%;
+    width: 25%;
+    opacity: 0;
+    color: rgb(0, 0, 0);
+    font-size: 1.1em;
+    font-weight: 600;
+    transition-duration: 0.3s;
+  }
+  /* hover effect on button width */
+  .Btn:hover {
+    width: 140px;
+    background-color: #e6e6e6;
+    color: #000000;
+    border-radius: 40px;
+    transition-duration: 0.3s;
+  }
+  
+  .Btn:hover .svgWrapper {
+    width: 25%;
+    transition-duration: 0.3s;
+    padding-left: 8px;
+  }
+  /* hover effect button's text */
+  .Btn:hover .text {
+    opacity: 1;
+    width: 60%;
+    transition-duration: 0.3s;
+    padding-right: 8px;
+  }
+  /* button click effect*/
+  .Btn:active {
+    transform: translate(2px, 2px);
+  }
   

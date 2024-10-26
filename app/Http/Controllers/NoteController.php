@@ -26,7 +26,7 @@ class NoteController extends Controller
         $validated = $request->validate([
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
-            'content' => 'nullable|string|max:1000',            
+            'content' => 'nullable|string|max:10000',            
         ]);
 
         $note = new Note();
@@ -67,7 +67,7 @@ class NoteController extends Controller
         $validated = $request->validate([
             'title' => 'nullable|string|max:50',
             'description' => 'nullable|string|max:100',
-            'content' => 'nullable|string|max:1000',
+            'content' => 'nullable|string|max:10000',
         ]);
 
         $note = Note::find($request->id);

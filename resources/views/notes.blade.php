@@ -77,13 +77,6 @@
 
                         <div>Pinned</div>
 
-                        <form action="{{ route('pinnedNote', ['id' => $note->id]) }}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                            <button type="submit">
-                                {{ $note->pinned ? 'Unpin' : 'Pin' }}
-                            </button>
-                        </form>
                         <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
                             <button type="submit" class="btn-view"></button>
                         </form>
@@ -104,13 +97,6 @@
                         <div><b>{{ $note->title ?? 'Untitled' }}</b></div>
                         <div class="description">{{ $note->description ?? 'no description' }}</div>
 
-                        <form action="{{ route('pinnedNote', ['id' => $note->id]) }}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                            <button type="submit">
-                                {{ $note->pinned ? 'Unpin' : 'Pin' }}
-                            </button>
-                        </form>
                         <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
                             <button type="submit" class="btn-view"></button>
                         </form>
@@ -123,7 +109,7 @@
                             @csrf
                             <button type="submit" class="btn-delete"></button>
                         </form>
-                        
+                        <hr>
                     @endforeach
                     
 

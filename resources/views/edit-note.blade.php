@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://127.0.0.1:8000/css/app.css">
-    <title>Notes App</title>
+    <title>Litera</title>
 </head>
 <body>
     <div class="note-container">

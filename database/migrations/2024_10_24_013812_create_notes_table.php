@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable()->default('Untitled');
             $table->string('description')->nullable()->default('no description');
-            $table->string('content')->nullable()->default('content');
+            $table->string('content')->nullable()->default('');
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://127.0.0.1:8000/css/app.css">
-    <title>Favorite</title>
+    <title>Litera</title>
 </head>
 <body>
     <div class="note-container">
@@ -56,9 +56,7 @@
                 </button>
             </form>
         </div>
-
-        <h1><b>Favorites</b></h1>
-
+        <h1><b>Favorite</b></h1>
         @foreach ($favoriteNotes->where('favorite', true) as $note)
             <div><b>{{$note->title ?? 'Untitled'}}</b></div>
             <div><i>{{$note->description}}</i></div>

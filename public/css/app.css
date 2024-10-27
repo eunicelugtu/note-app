@@ -48,19 +48,20 @@ h1, h2, h3 {
     padding: 0;
     display: flex;
     flex-wrap: wrap; /* Allows wrapping to the next line */
-    justify-content: center; /* Centers notes horizontally */
+    gap: 20px; /* Centers notes horizontally */
 }
 
 .note-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 15px;
+    grid-gap: 20px;
     padding: 20px;
 }
 
 .note-card {
     background-color: #cad2c5;
     border: 1px solid #5e5757;
+    flex: 1 1 calc(50% - 10px);
     border-radius: 8px;
     margin-bottom: 15px;
     padding: 15px;
@@ -88,6 +89,13 @@ h1, h2, h3 {
     display: -webkit-box;
     line-clamp: 3; /* Limits the preview to 3 lines */
     -webkit-box-orient: vertical;
+}
+
+/* For smaller screens, stack notes in a single column */
+@media (max-width: 600px) {
+    .note-card {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
 }
 
 button {
@@ -200,10 +208,11 @@ button:hover {
 
 
 .note-container {
-    max-width: 700px;
+    max-width: 800px;
+    height: 90%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -543,64 +552,94 @@ footer p {
 }
 
 
-/* From Uiverse.io by vinodjangid07 */ 
-.button-back {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #375255;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 0px 4px rgba(110, 108, 120, 0.253);
-    cursor: pointer;
-    transition-duration: 0.3s;
-    overflow: hidden;
+/* From Uiverse.io by cssbuttons-io */ 
+#button-back {
     position: relative;
-}
-
-.svgIcon {
-    width: 12px;
-    transition-duration: 0.3s;
-}
-
-.svgIcon path {
-    fill: white;
-}
-
-.button-back:hover {
-    width: 150px;
-    border-radius: 50px;
-    transition-duration: 0.3s;
-    background-color: #84a98c;
-    align-items: center;
-}
-
-.button-back:hover .svgIcon {
-    /* width: 20px; */
-    transition-duration: 0.3s;
-    transform: translateY(-200%);
-}
-
-.button-back::before {
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+   }
+   
+   #button-back.button-back {
+    width: 12rem;
+    height: auto;
+   }
+   
+   #button-back.button-back .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 43px;
+    background: #3a4d57;
+    border-radius: 1.625rem;
+   }
+   
+   #button-back.button-back .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
-    bottom: -20px;
-    content: "back to notes";
-    color: white;
-    /* transition-duration: .3s; */
-    font-size: 0px;
-}
-
-.button-back:hover::before {
-    font-size: 13px;
-    opacity: 1;
-    bottom: unset;
-    /* transform: translateY(-30px); */
-    transition-duration: 0.3s;
-}
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #ffffff;
+   }
+   
+   #button-back.button-back .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.150rem;
+    background: none;
+   }
+   
+   #button-back.button-back .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+   }
+   
+   #button-back.button-back .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.65rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #282936;
+    font-weight: 700;
+    font-size: medium;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+    text-align: center;
+    text-transform: lowercase;
+   }
+   
+   #button-back:hover .circle {
+    width: 100%;
+   }
+   
+   #button-back:hover .circle .icon.arrow {
+    background: #ffffff;
+    transform: translate(1rem, 0);
+   }
+   
+   #button-back:hover .button-text {
+    color: #fff;
+   }
 
 
 /* From Uiverse.io by anniekoop */ 
@@ -971,4 +1010,249 @@ footer p {
   .Btn:active {
     transform: translate(2px, 2px);
   }
+
+
+/* From Uiverse.io by barisdogansutcu */ 
+#favoriteForm label {
+    background-color: #c5d8c9;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    width: 170px;
+    height: 12px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 45px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    color: black;
+   }
+   
+   #favoriteForm input{
+    display: none;
+   }
+   
+   #favoriteForm input:checked + label svg {
+    fill: hsl(0deg 100% 50%);
+    stroke: hsl(0deg 100% 50%);
+    animation: heartButton 1s;
+   }
+   
+   @keyframes heartButton {
+    0% {
+     transform: scale(1);
+    }
+   
+    25% {
+     transform: scale(1.3);
+    }
+   
+    50% {
+     transform: scale(1);
+    }
+   
+    75% {
+     transform: scale(1.3);
+    }
+   
+    100% {
+     transform: scale(1);
+    }
+   }
+   
+   #favoriteForm input + label .action {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+   }
+   
+   #favoriteForm input + label .action span {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    transition: all .5s;
+   }
+   
+   #favoriteForm input + label .action span.option-1 {
+    transform: translate(0px,0%);
+    opacity: 1;
+   }
+   
+   #favoriteForm input:checked + label .action span.option-1 {
+    transform: translate(0px,-100%);
+    opacity: 0;
+   }
+   
+   #favoriteForm input + label .action span.option-2 {
+    transform: translate(0px,100%);
+    opacity: 0;
+   }
+   
+   #favoriteForm input:checked + label .action span.option-2 {
+    transform: translate(0px,0%);
+    opacity: 1;
+   }
+   
+/* From Uiverse.io by aasisodiya */ 
+.button-p {
+    background-color: #c5d8c9;
+    border: none;
+    padding: 18px 20px 18px 18px;
+    font-size: 0.98rem;
+    width: 72px;
+    height: 20px;
+    border-radius: 45px;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0.3rem #c1b6b6;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+   }
+   
+.button-p:active {
+    color: white;
+    box-shadow: 0 0.2rem #898585;
+    transform: translateY(0.2rem);
+   }
+   
+.button-p:hover:not(:disabled) {
+    background: rgb(161, 172, 158);
+    color: white;
+    text-shadow: 0 0.1rem #686464;
+    box-shadow: 0 0.2rem #1e1b1b;
+   }
+   
+.button-p:disabled {
+    cursor: auto;
+    color: rgb(50, 73, 58);
+   }
+
+
+.button-a {
+    background-color: #c5d8c9;
+    border: none;
+    padding: 18px;
+    padding-left: 15px;
+    font-size: 0.98rem;
+    width: 95px;
+    height: 20px;
+    border-radius: 45px;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0.3rem #c1b6b6;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+   }
+   
+.button-a:active {
+    color: white;
+    box-shadow: 0 0.2rem #898585;
+    transform: translateY(0.2rem);
+   }
+   
+.button-a:hover:not(:disabled) {
+    background: rgb(161, 172, 158);
+    color: white;
+    text-shadow: 0 0.1rem #686464;
+    box-shadow: 0 0.2rem #1e1b1b;
+   }
+   
+.button-a:disabled {
+    cursor: auto;
+    color: rgb(50, 73, 58);
+}  
+
+
+/* From Uiverse.io by LilaRest */ 
+#button-f {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    width: 120px; /* Reduced width */
+    height: 40px;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #c5d8c9;
+    border-color: #989797;
+    border-style: none;
+    border-radius: 20px;
+    font-size: 0.98rem;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins', sans-serif;
+    transition:
+      transform 400ms cubic-bezier(0.68, -0.55, 0.27, 2.5),
+      border-color 400ms ease-in-out,
+      background-color 400ms ease-in-out;
+    word-spacing: -2px;
+  }
+  
+  @keyframes movingBorders {
+    0% {
+      border-color: #fce4e4;
+    }
+  
+    50% {
+      border-color: #ffd8d8;
+    }
+  
+    90% {
+      border-color: #fce4e4;
+    }
+  }
+  
+  #button-f:hover {
+    background-color: #eee;
+    transform: scale(1.05);
+    animation: movingBorders 3s infinite;
+  }
+  
+  #button-f svg {
+    width: 18px; /* Reduced icon size */
+    height: 18px;
+    margin-right: 2px;
+    fill: rgb(255, 110, 110);
+    transition: opacity 80ms ease-in-out;
+  }
+  
+  .filled {
+    position: absolute;
+    opacity: 0;
+    top: 10px;
+    left: 14px;
+  }
+  
+  @keyframes beatingHeart {
+    0% {
+      transform: scale(1);
+    }
+  
+    15% {
+      transform: scale(1.15);
+    }
+  
+    30% {
+      transform: scale(1);
+    }
+  
+    45% {
+      transform: scale(1.15);
+    }
+  
+    60% {
+      transform: scale(1);
+    }
+  }
+  
+  #button-f:hover .empty {
+    opacity: 0;
+  }
+  
+  #button-f:hover .filled {
+    opacity: 1;
+    animation: beatingHeart 1.2s infinite;
+  }
+  
   

@@ -62,32 +62,37 @@
         <form action="{{ route('pinnedNote', ['id' => $note->id]) }}" method="POST" style="display:inline">
             @method('PATCH')
             @csrf
-            <button type="submit">
-                {{ $note->pinned ? 'Unpin' : 'Pin' }}
+            <button class="button-p" type="submit">
+                <i>{{ $note->pinned ? 'Unpin' : 'Pin' }}</i>
             </button>
         </form>
-        <form action="{{ route('favoriteNote', ['id' => $note->id]) }}" method="POST" style="display:inline">
+        <form id="favoriteForm" action="{{ route('favoriteNote', ['id' => $note->id]) }}" method="POST" style="display:inline">
             @method('PATCH')
             @csrf
-            <button type="submit">
-                {{ $note->favorite ? 'Unfavorite' : 'Favorite' }}
+            <button id=button-f type="submit">
+                <svg
+                    class="empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"><path fill="none" d="M0 0H24V24H0z"></path><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604c.881-.556 1.676-1.109 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5 5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903.745.592 1.54 1.145 2.421 1.7.299.189.595.37.934.572.339-.202.635-.383.934-.571z"></path>
+                </svg><svg class="filled" height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H24V24H0z" fill="none"></path><path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+                </svg>
+                <i>{{ $note->favorite ? 'Unfavorite' : 'Favorite' }}</i>
             </button>
         </form>
         <form action="{{ route('archiveNote', ['id' => $note->id]) }}" method="POST" style="display:inline">
             @method('PATCH')
             @csrf
-            <button type="submit">
-                {{ $note->archive ? 'Unarchive' : 'Archive' }}
+            <button class="button-a" type="submit">
+                <i>{{ $note->archived ? 'Unarchive' : 'Archive' }}</i>
             </button>
         </form>
-        <div><h2><b>{{ $note->title ?? 'Untitled' }}</b></h2></div>
-        <div class="description">{{ $note->description ?? 'no description' }}</div><br>
-        <div class="content">{{$note->content ?? ' '}}</div>
-        <div><p><strong>Last Updated:</strong> {{ $note->updated_at->diffForHumans() }}</p></div>
 
         @if ($note->favorite)
             <div>Favorite</div>
         @endif
+        <div><h2><b>{{ $note->title ?? 'Untitled' }}</b></h2></div>
+        <div class="description">{{ $note->description ?? 'no description' }}</div><br>
+        <div class="content">{{$note->content ?? ' '}}</div>
+        <div><p><strong>Last Updated:</strong> {{ $note->updated_at->diffForHumans() }}</p></div>
 
         <br>
         <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline">
@@ -100,8 +105,9 @@
             <button type="submit" class="btn-delete"></button>
         </form>
         <form action="{{route('showAllNotes')}}" method="GET" style="display:inline;">
-            <button class="button-back">
-                <svg class="svgIcon" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path></svg>
+            <button id=button-back class="button-back">
+                <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+                <span class="button-text">back to notes</span>
             </button>
         </form> 
     </div>

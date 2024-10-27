@@ -10,9 +10,7 @@ class NoteController extends Controller
 {
     public function showAllNotes()
     {
-        $notes = Note::where('archived', false)->orderBy('pinned', 'desc')->get();
-        $notes = Note::where('archived', false)->orderBy('updated_at', 'desc')->get();
-
+        $notes = Note::where('archived', false)->orderBy('pinned', 'desc')->orderBy('updated_at', 'desc')->get();
         return view('notes', ['notes' => $notes]);
     }
 

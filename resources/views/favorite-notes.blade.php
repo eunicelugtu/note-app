@@ -56,7 +56,7 @@
                 </button>
             </form>
         </div>
-        <h1><b>Favorite</b></h1>
+        <h1><b>Favorites</b></h1>
         @foreach ($favoriteNotes->where('favorite', true) as $note)
             <div><b>{{$note->title ?? 'Untitled'}}</b></div>
             <div><i>{{$note->description}}</i></div>

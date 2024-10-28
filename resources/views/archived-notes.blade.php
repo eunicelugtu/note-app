@@ -66,8 +66,14 @@
                 <div class="note-grid">
                     @foreach ($archivedNotes->where('archived', true) as $note)
                     <div class="note-card">
+
+                        @if ($note->pinned)
+                            <div class="pin-icon">🖈</div> <!-- Use a pin emoji or replace with an SVG -->
+                        @endif
+
                         <div class="title"><b>{{$note->title ?? 'Untitled'}}</b></div>
-                        <div class="description"><i>{{$note->description}}</i></div>
+                        <div class="description"><i>{{$note->description ?? 'no description'}}</i></div>
+                        <div class="content">{{$note->excerpt()}}</div>
 
                         <br>
                         <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">

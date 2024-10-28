@@ -75,8 +75,8 @@
                     @foreach ($trashedNotes as $note)
                     <div class="note-card">
                         <div class="title"><b>{{ $note->title ?? 'Untitled' }}</b></div>
-                        <div class="description">{{ $note->description ?? 'no description' }}</div>
-                        <div class="content">{{ $note->content ?? '' }}</>
+                        <div class="description"><i>{{ $note->description ?? 'no description' }}</i></div>
+                        <div class="content">{{ $note->content ?? '' }}</div>
 
                         <br>
                         <form action="{{ route('restoreNote', ['id' => $note->id]) }}" method="POST" style="display:inline;">

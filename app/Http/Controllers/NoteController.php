@@ -147,7 +147,7 @@ class NoteController extends Controller
 
     public function showAllFavorites()
     {
-        $favoriteNotes = Note::orderBy('favorite', 'desc')->get();
+        $favoriteNotes = Note::orderBy('pinned', 'desc')->orderBy('favorite', 'desc')->orderBy('updated_at', 'desc')->get();
         return view('favorite-notes', ['favoriteNotes' => $favoriteNotes]);
     }
 
@@ -162,7 +162,7 @@ class NoteController extends Controller
 
     public function showArchive()
     {
-        $archivedNotes = Note::orderBy('archived', 'desc')->get();
+        $archivedNotes = Note::orderBy('pinned', 'desc')->orderBy('archived', 'desc')->orderBy('updated_at', 'desc')->get();
         return view('archived-notes', ['archivedNotes' => $archivedNotes]);
     }
 }

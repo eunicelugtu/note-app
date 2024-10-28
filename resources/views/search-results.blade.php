@@ -75,7 +75,8 @@
                     @foreach ($results as $result)
                     <div class="note-card">
                         <div class="title"><b>{{ $result->title ?? 'Untitled' }}</b></div>
-                        <div class="description">{{ $result->description ?? 'no description' }}</div>
+                        <div class="description"><i>{{ $result->description ?? 'no description' }}</i></div>
+                        <div class="content">{{$result->excerpt()}}</div>
 
                         <br>
                         <form action="{{route('showNote', ['id' => $result->id])}}" method="GET" style="display:inline;">

@@ -92,7 +92,7 @@
         <div class="note-card2">
             <div class="heart-container">
                 @if ($note->favorite)
-                    <div class>♥</div>
+                    <div class="heart-icon">♥</div>
                 @endif
             </div>
 

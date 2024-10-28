@@ -119,6 +119,34 @@ h1, h2, h3 {
     }
 }
 
+.heart-container {
+    position: absolute; /* Position the heart icon absolutely */
+    top: 5px; /* Adjust to position the heart vertically */
+    right: 30px; /* Adjust to position the heart horizontally */
+    font-size: 32px; /* Size of the heart */
+    color: red; /* Color of the heart when favorited */
+    opacity: 0; /* Start off invisible */
+    transition: opacity 0.3s, transform 0.3s; /* Smooth transition for opacity and size */
+}
+
+.note-card2:hover .heart-container {
+    opacity: 1; /* Show the heart when hovering over the note */
+    transform: scale(1.2); /* Slightly increase size on hover */
+}
+
+/* Add any additional styles for heart icon when favorited */
+.heart-icon {
+    display: inline-block; /* Ensure the heart can respond to hover events */
+}
+
+.pin-icon{
+    position: relative;
+    bottom: 15px;
+    right: 10px;
+    font-size: 25px;
+    display: inline;
+}
+
 .note-card2 {
     background-color: #cad2c5;
     border: 1px solid #5e5757;
@@ -129,6 +157,7 @@ h1, h2, h3 {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden; /* Prevent the heart from overflowing */
 }
 
 .note-card2:hover {
@@ -1316,4 +1345,26 @@ footer p {
     animation: beatingHeart 1.2s infinite;
   }
   
-  
+  @media (max-width: 480px) {
+    #button-back, .button-trash, .Btn, .button-archive, #button-f {
+        width: 100%;
+        padding: 6px;
+        font-size: 0.75rem;
+    }
+    .note-card {
+        width: 100%;
+        font-size: 0.75rem;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 320px) {
+    #button-back,
+    .button-trash,
+    .Btn,
+    .note-card,
+    .button-archive,
+    #button-f {
+        display: none;
+    }
+}

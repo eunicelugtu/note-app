@@ -73,12 +73,13 @@
             <div class="note-grid">
                 @foreach ($notes as $note)
                 <div class="note-card">
-                    <p class="title"><b>{{ $note->title ?? 'Untitled' }}</b></p>
-                    <p class="description">{{ $note->description ?? 'no description' }}</p>
                     
                     @if ($note->pinned)
-                    <div>Pinned</div>
+                        <div class="pin-icon">🖈</div> <!-- Use a pin emoji or replace with an SVG -->
                     @endif
+                
+                    <p class="title"><b>{{ $note->title ?? 'Untitled' }}</b></p>
+                    <p class="description">{{ $note->description ?? 'no description' }}</p>
 
                     <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
                         <button type="submit" class="btn-view"></button>

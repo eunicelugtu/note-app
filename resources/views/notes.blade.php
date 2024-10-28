@@ -80,6 +80,7 @@
                 
                     <p class="title"><b>{{ $note->title ?? 'Untitled' }}</b></p>
                     <p class="description">{{ $note->description ?? 'no description' }}</p>
+                    <p class="content">{{ $note->excerpt() }}</p>
 
                     <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
                         <button type="submit" class="btn-view"></button>

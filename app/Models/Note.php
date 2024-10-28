@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Note extends Model
 {
@@ -17,4 +18,9 @@ class Note extends Model
         'favorite',
         'archived'
     ];
+
+    public function excerpt($length = 50)
+    {
+        return Str::limit($this->content, $length, '...');
+    }
 }

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://127.0.0.1:8000/css/app.css">
+    <link rel="icon" href="{{ asset('images/Litera.png') }}" type="image/png">
+
     <title>Litera</title>
 </head>
 <body>
@@ -58,34 +60,59 @@
         </div>
 
         <h1><b>Edit Note</b></h1>
-        <form action="{{route('updateNote', ['id' => $note->id])}}" method="POST">
-            @method('PUT')
-            @csrf
-            <div>
-                <label for="title"></label>
-                <input value="{{$note->title}}" placeholder="Title" class="input-t" id="title" name="title" type="text"/><br>
-            </div><br>
-            <div class="form-group">
-                <label for="description"></label>
-                <input value="{{$note->description}}" placeholder="Description" class="input-dc" id="description" name="description" type="text"><br>
-            </div>
-            <div class="form-group">
-                <label for="content"></label>
-                <input value="{{$note->content}}" placeholder="Content" class="input-dc" id="content" name="content" type="text"><br>
-            </div>
-            <br>
+            <div class="note-card">
+                <form action="{{route('updateNote', ['id' => $note->id])}}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <div>
+                        <label for="title"></label>
+                        <input value="{{$note->title}}" placeholder="Title" class="input-t" id="title" name="title" type="text"/><br>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="description"></label>
+                        <input value="{{$note->description}}" placeholder="Description" class="input-dc" id="description" name="description" type="text"><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="content"></label>
+                        <input value="{{$note->content}}" placeholder="Content" class="input-dc" id="content" name="content" type="text"><br>
+                    </div>
+                    <br>
 
-            <br>
-            <button type="submit" class="button-update"><span class="shadow-update"></span><span class="edge-update"></span><div class="front-update"><span>update</span></div></button>
+                    <button type="submit" class="button-update"><span class="shadow-update"></span><span class="edge-update"></span><div class="front-update"><span>update</span></div></button>
+                </form>
+            </div>
+
             <form action="{{route('showAllNotes')}}" method="GET" style="display:inline;">
                 <button id=button-back class="button-back">
                     <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
-                    <span class="button-text">back to notes</span>
-              </button>
+                    <span class="button-text">back</span>
+            </button>
             </form>
-        </form>
     </div>
-    
-    
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const content = document.getElementById('content');
+        const errorMessage = document.getElementById('error-message');
+        const createButton = document.querySelector('.form-submit-btn');
+        const maxCharacters = 10000;
+
+        content.addEventListener('input', function () {
+            if (content.value.length > maxCharacters) {
+                errorMessage.style.display = 'block';
+                createButton.disabled = true;
+            } else {
+                errorMessage.style.display = 'none';
+                createButton.disabled = false; 
+            }
+        });
+    });
+</script>
+
 </body>
+
+<footer>
+    <p>© {{ date('Y') }} Litera - A Note Application | BSIS 2 1st Semester Mid-Project | All Rights Reserved</p>
+    <p>Developed by Yunis and Lyncie</p>
+</footer>
 </html>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://127.0.0.1:8000/css/app.css">
+    <link rel="icon" href="{{ asset('images/Litera.png') }}" type="image/png">
     <title>Litera</title>
 </head>
 <body>
@@ -65,41 +66,37 @@
             </button>
         </form>
 
-    <ul class="note-list">
-        <li>
+        @if ($notes->isEmpty())
+        <p class="notes-section">no notes found. start creating some!</p>
+
+        @else
             <div class="note-grid">
+                @foreach ($notes as $note)
                 <div class="note-card">
-                    @foreach ($notes as $note)
-                        <div class="note pinned">
-                        <div><b>{{ $note->title ?? 'Untitled' }}</b></div>
-                        <div class="description">{{ $note->description ?? 'no description' }}</div>
-                        
-                        @if ($note->pinned)
-                        <div>Pinned</div>
-                        @endif
+                    <p class="title"><b>{{ $note->title ?? 'Untitled' }}</b></p>
+                    <p class="description">{{ $note->description ?? 'no description' }}</p>
+                    
+                    @if ($note->pinned)
+                    <div>Pinned</div>
+                    @endif
 
-                        <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
-                            <button type="submit" class="btn-view"></button>
-                        </form>
-                        <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
-                            <button type="submit" class="btn-edit"></button>
-                        </form>
-                        <form action="{{route('deleteNote', ['id' => $note->id])}}" method="POST" style="display:inline"
-                        onsubmit="return confirm('Move to trash?')">
-                            @method('POST')
-                            @csrf
-                            <button type="submit" class="btn-delete"></button>
-                        </form>
-                        <hr>
-                    @endforeach
-                    
-                    
+                    <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
+                        <button type="submit" class="btn-view"></button>
+                    </form>
+                    <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
+                        <button type="submit" class="btn-edit"></button>
+                    </form>
+                    <form action="{{route('deleteNote', ['id' => $note->id])}}" method="POST" style="display:inline"
+                    onsubmit="return confirm('Move to trash?')">
+                        @method('POST')
+                        @csrf
+                        <button type="submit" class="btn-delete"></button>
+                    </form>
                 </div>
+                @endforeach
             </div>
-            
+        @endif
 
-        </li>
-    </ul>
     </div>
 </body>
 

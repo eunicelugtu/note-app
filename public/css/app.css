@@ -8,6 +8,14 @@ body {
     line-height: 1.6;
 }
 
+.description, .title{
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
 .description, .content {
     font-family: 'Raleway', sans-serif;
 }
@@ -29,6 +37,19 @@ h1, h2, h3 {
     margin: 20px 0;
 }
 
+.heart-container {
+    margin-left: 100px;
+}
+
+.notes-section ,
+.archived-section ,
+.trashbin-section , .favorites-section ,
+.search-results-section {
+    font-style: italic;
+    color: #888;
+    text-align: center;
+    padding: 10px;
+}
 
 .trash-form {
     float: right; /* Pushes the trash button to the right */
@@ -94,6 +115,46 @@ h1, h2, h3 {
 /* For smaller screens, stack notes in a single column */
 @media (max-width: 600px) {
     .note-card {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
+}
+
+.note-card2 {
+    background-color: #cad2c5;
+    border: 1px solid #5e5757;
+    flex: 1 1 calc(50% - 10px);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.note-card2:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slightly bigger shadow on hover */
+    transform: translateY(-3px);
+}
+
+.note-card2 h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.note-card2 i {
+    font-size: 0.95rem;
+    color: #0b0b0b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 3; /* Limits the preview to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+/* For smaller screens, stack notes in a single column */
+@media (max-width: 600px) {
+    .note-card2 {
         flex: 1 1 100%; /* Full width on small screens */
     }
 }
@@ -566,7 +627,7 @@ footer p {
    }
    
    #button-back.button-back {
-    width: 12rem;
+    width: 8rem;
     height: auto;
    }
    
@@ -645,7 +706,7 @@ footer p {
 /* From Uiverse.io by anniekoop */ 
 .input-t {
     font-family: "Poppins", sans-serif;
-    max-width: 40%;
+    max-width: 70%;
     padding: 0.875rem;
     font-size: 1rem;
     border: 1.5px solid #000;
@@ -661,8 +722,8 @@ footer p {
 
 
 .input-dc{
-    font-family: "Poppins", sans-serif;
-    max-width: 55%;
+    font-family: 'Poppins', sans-serif;
+    max-width: 90%;
     padding: 0.875rem;
     font-size: 1.2rem;
     border: 1.5px solid #000;
@@ -1221,7 +1282,7 @@ footer p {
     position: absolute;
     opacity: 0;
     top: 10px;
-    left: 14px;
+    left: 16px;
   }
   
   @keyframes beatingHeart {

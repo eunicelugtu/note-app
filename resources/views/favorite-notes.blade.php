@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://127.0.0.1:8000/css/app.css">
+    <link rel="icon" href="{{ asset('images/Litera.png') }}" type="image/png">
+
     <title>Litera</title>
 </head>
 <body>
@@ -57,24 +59,44 @@
             </form>
         </div>
         <h1><b>Favorites</b></h1>
-        @foreach ($favoriteNotes->where('favorite', true) as $note)
-            <div><b>{{$note->title ?? 'Untitled'}}</b></div>
-            <div><i>{{$note->description}}</i></div>
+            @if ($favoriteNotes->isEmpty())
+                <p class="favorites-section">you haven’t added any favorites yet</p>
+            @else
+                <div class="note-grid">
+                    @foreach ($favoriteNotes->where('favorite', true) as $note)
+                        <div class="note-card">
+                            <div class="title"><b>{{$note->title ?? 'Untitled'}}</b></div>
+                            <div class="description"><i>{{$note->description}}</i></div>
 
-            <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
-                <button type="submit" class="btn-view"></button>
+                            <form action="{{route('showNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
+                                <button type="submit" class="btn-view"></button>
+                            </form>
+                            <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
+                                <button type="submit" class="btn-edit"></button>
+                            </form>
+                            <form action="{{route('deleteNote', ['id' => $note->id])}}" method="POST" style="display:inline"
+                            onsubmit="return confirm('Move to trash?')">
+                                @method('POST')
+                                @csrf
+                                <button type="submit" class="btn-delete"></button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
+            <form action="{{route('showAllNotes')}}" method="GET" style="display:inline;">
+                <button id=button-back class="button-back">
+                    <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+                    <span class="button-text">back</span>
+                </button>
             </form>
-            <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline;">
-                <button type="submit" class="btn-edit"></button>
-            </form>
-            <form action="{{route('deleteNote', ['id' => $note->id])}}" method="POST" style="display:inline"
-            onsubmit="return confirm('Move to trash?')">
-                @method('POST')
-                @csrf
-                <button type="submit" class="btn-delete"></button>
-            </form>
-            <hr>
-        @endforeach
     </div>
+
 </body>
+
+<footer>
+    <p>© {{ date('Y') }} Litera - A Note Application | BSIS 2 1st Semester Mid-Project | All Rights Reserved</p>
+    <p>Developed by Yunis and Lyncie</p>
+</footer>
 </html>

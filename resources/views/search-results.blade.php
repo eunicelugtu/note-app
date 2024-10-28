@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://127.0.0.1:8000/css/app.css">
+    <link rel="icon" href="{{ asset('images/Litera.png') }}" type="image/png">
+
     <title>Litera</title>
 </head>
 <body>
@@ -58,33 +60,43 @@
         </div>
 
         <h1><b>Search Results</b></h1>
+            @if($results->isEmpty())
+                <p class="search-results-section">no results found</p><br>
 
-        @if($results->isEmpty())
-            <p>No results found.</p><br>
-
-            <form action="{{route('showAllNotes')}}" method="GET" style="display:inline;">
-                <button type="submit">Back To Notes</button>
-            </form>
-        @else
-            @foreach ($results as $result)
-                <div><b>{{ $result->title ?? 'Untitled' }}</b></div>
-                <div class="description">{{ $result->description ?? 'no description' }}</div>
-
-                <br>
-                <form action="{{route('showNote', ['id' => $result->id])}}" method="GET" style="display:inline;">
-                    <button type="submit" class="btn-view"></button>
-                </form>
                 <form action="{{route('showAllNotes')}}" method="GET" style="display:inline;">
                     <button id=button-back class="button-back">
                         <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
-                        <span class="button-text">back to notes</span>
-                  </button>
+                        <span class="button-text">back</span>
+                    </button>
                 </form>
-                <hr>
-            @endforeach
 
-        @endif 
+            @else
+                <div class="note-grid">
+                    @foreach ($results as $result)
+                    <div class="note-card">
+                        <div class="title"><b>{{ $result->title ?? 'Untitled' }}</b></div>
+                        <div class="description">{{ $result->description ?? 'no description' }}</div>
+
+                        <br>
+                        <form action="{{route('showNote', ['id' => $result->id])}}" method="GET" style="display:inline;">
+                            <button type="submit" class="btn-view"></button>
+                        </form>
+                    </div>
+                    @endforeach
+                </div>
+                <form action="{{route('showAllNotes')}}" method="GET" style="display:inline;">
+                    <button id=button-back class="button-back">
+                        <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+                        <span class="button-text">back</span>
+                    </button>
+                </form>
+            @endif 
     </div>
         
 </body>
+
+<footer>
+    <p>© {{ date('Y') }} Litera - A Note Application | BSIS 2 1st Semester Mid-Project | All Rights Reserved</p>
+    <p>Developed by Yunis and Lyncie</p>
+</footer>
 </html>

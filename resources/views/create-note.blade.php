@@ -66,15 +66,15 @@
                 @csrf
                 <div>
                     <label for="title"></label>
-                    <input placeholder="Title" class="input-t" id="title" name="title" type="text" /><br>
+                    <input placeholder="Title" class="input-t" id="title" name="title" maxlength="50" type="text" /><br>
                 </div><br>
                 <div class="form-group">
                     <label for="description"></label>
-                    <input placeholder="Description" class="input-dc" id="description" name="description" type="text"><br>
+                    <input placeholder="Description" class="input-dc" id="description" name="description" maxlength="100" type="text"><br>
                 </div>
                 <div class="form-group">
                     <label for="content"></label>
-                    <input placeholder="Content" class="input-dc" id="content" name="content" type="text"><br>
+                    <input placeholder="Content" class="input-dc" id="content" name="content" maxlength="10000" type="text" required><br>
                 </div>
             <br>
             <button type="submit" class="button-save"><span class="shadow"></span><span class="edge"></span><div class="front"><span>save</span></div></button>
@@ -89,25 +89,6 @@
         </form>
 
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const content = document.getElementById('content');
-        const errorMessage = document.getElementById('error-message');
-        const createButton = document.querySelector('.form-submit-btn');
-        const maxCharacters = 10000;
-
-        content.addEventListener('input', function () {
-            if (content.value.length > maxCharacters) {
-                errorMessage.style.display = 'block';
-                createButton.disabled = true;
-            } else {
-                errorMessage.style.display = 'none';
-                createButton.disabled = false; 
-            }
-        });
-    });
-</script>
 
 </body>
 

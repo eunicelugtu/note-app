@@ -98,7 +98,7 @@
 
             <div class="title"><h2><b>{{ $note->title ?? 'Untitled' }}</b></h2></div>
             <div class="description">{{ $note->description ?? 'no description' }}</div><br>
-            <div class="description">{{$note->content ?? ' '}}</div>
+            <div class="description">{{$note->content}}</div>
             <div><p><strong>Last Updated:</strong> {{ $note->updated_at->diffForHumans() }}</p></div>
 
             <form action="{{route('editNote', ['id' => $note->id])}}" method="GET" style="display:inline">

@@ -119,6 +119,25 @@ h1, h2, h3 {
     }
 }
 
+@media (max-width: 600px) {
+    .note-card {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
+}
+
+@media (max-width: 400px) {
+    .note-card {
+        padding: 10px; /* Reduce padding for smaller screens */
+        margin-bottom: 10px; /* Adjust margin for smaller screens */
+    }
+}
+
+@media (max-width: 200px) {
+    .note-card {
+        display: none; /* Hide note cards */
+    }
+}
+
 .heart-container {
     position: absolute; /* Position the heart icon absolutely */
     top: 5px; /* Adjust to position the heart vertically */
@@ -573,6 +592,57 @@ footer p {
     height: 1rem;
 }
 
+/* Gradually reduce size of search button and input on smaller screens */
+@media (max-width: 600px) {
+    .group {
+        max-width: 200px;
+    }
+    .input {
+        font-size: 0.9em;
+        padding-left: 2rem;
+    }
+    .icon {
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .group {
+        max-width: 150px;
+    }
+    .input {
+        font-size: 0.8em;
+        padding-left: 1.5rem;
+    }
+    .icon {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+}
+
+/* Hide search button completely at 200px or below */
+@media (max-width: 200px) {
+    .group {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .button-add {
+        width: 120px;
+        height: 35px;
+    }
+}
+
+/* Hide button at 200px or below */
+@media (max-width: 200px) {
+    .button-add {
+        display: none;
+    }
+}
+
 
 
 /* From Uiverse.io by zjssun */ 
@@ -638,6 +708,32 @@ footer p {
   
     100% {
       background-position: 0%;
+    }
+}
+
+@media (max-width: 600px) {
+    .button-logo {
+        font-size: 2.5em;
+    }
+    .logo-container {
+        max-width: 150px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .button-logo {
+        font-size: 1em;
+    }
+    .logo-container {
+        max-width: 100px;
+    }
+}
+
+/* Hide button-logo and logo-container at 200px or below */
+@media (max-width: 200px) {
+    .button-logo, .logo-container {
+        display: none;
     }
 }
 
@@ -1011,6 +1107,27 @@ footer p {
     box-shadow: rgba(128, 123, 123, 0.35) 0px 5px 15px,
           rgba(70, 66, 68, 0.5) 5px 10px 15px;
 }
+
+/* Responsive styling for the button container */
+@media (max-width: 600px) {
+    .button-container {
+        height: 45px; /* Decrease height for smaller screens */
+        justify-content: space-between; /* Adjust spacing */
+    }
+}
+
+@media (max-width: 400px) {
+    .button-container {
+        height: 40px; /* Further decrease height */
+    }
+}
+
+@media (max-width: 200px) {
+    .button-container {
+        display: none; /* Hide the button container */
+    }
+}
+
   
 .button-menu {
     width: 40px;
@@ -1100,6 +1217,36 @@ footer p {
   .Btn:active {
     transform: translate(2px, 2px);
   }
+
+/* Responsive styling for the button menu */
+@media (max-width: 600px) {
+    .button-menu {
+        width: 35px; /* Decrease width */
+        height: 35px; /* Decrease height */
+    }
+
+    .icon {
+        font-size: 18px; /* Slightly reduce icon size */
+    }
+}
+
+@media (max-width: 400px) {
+    .button-menu {
+        width: 30px; /* Further decrease width */
+        height: 30px; /* Further decrease height */
+    }
+
+    .icon {
+        font-size: 16px; /* Further reduce icon size */
+    }
+}
+
+/* Hide button menu completely at 200px or below */
+@media (max-width: 200px) {
+    .button-menu {
+        display: none; /* Hide button */
+    }
+}
 
 
 /* From Uiverse.io by barisdogansutcu */ 
